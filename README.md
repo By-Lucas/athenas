@@ -18,3 +18,24 @@ docker run -p 8080:8080 athenas_backend
 ```
 python manage.py runserver
 ```
+
+# ROTAS USUARIOS
+- **Cadastrar**
+```
+http://127.0.0.1:8000/api/register
+```
+
+- **LOGIN**
+```
+http://127.0.0.1:8000/api/login
+```
+
+- **RETORNAR USUARIO**
+```
+http://127.0.0.1:8000/api/user
+```
+
+- **LOGOUT | SAIR**
+```
+http://127.0.0.1:8000/api/logout
+```

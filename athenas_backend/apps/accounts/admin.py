@@ -21,8 +21,6 @@ class CustomUserAdmin(UserAdmin):
     )}),)
     forms = UserForm
 
-    
-
 
 class UserClinicAdmin(admin.ModelAdmin):
     list_display = ['user', 'clinic']
