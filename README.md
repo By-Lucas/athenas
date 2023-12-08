@@ -16,26 +16,48 @@ docker run -p 8080:8080 athenas_backend
 
 - **Executar o `projeto via django`**
 ```
-python manage.py runserver
+python .\athenas_backend\manage.py runserver
 ```
 
 # ROTAS USUARIOS
-- **Cadastrar**
+- **CADASTRAR USUARIO**
 ```
 http://127.0.0.1:8000/api/register
 ```
 
-- **LOGIN**
+- **FAZER LOGIN**
 ```
 http://127.0.0.1:8000/api/login
 ```
 
-- **RETORNAR USUARIO**
+- **RETORNAR DADOS DO USUARIO LOGADO**
 ```
 http://127.0.0.1:8000/api/user
 ```
 
-- **LOGOUT | SAIR**
+- **LOGOUT | DESCONECTAR**
 ```
 http://127.0.0.1:8000/api/logout
 ```
+
+# ROTAS PESSOAS
+- **CADASTRAR PESSOA**
+```
+http://127.0.0.1:8000/people/create
+```
+
+- **EDITAR PESSOA**
+```
+http://127.0.0.1:8000/people/update/1
+```
+
+- **BUSCAR PESSOA**
+```
+http://127.0.0.1:8000/people/1
+```
+
+- **TODAS AS PESSOAS**
+```
+http://127.0.0.1:8000/people/all
+```
+
