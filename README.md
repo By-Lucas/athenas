@@ -19,6 +19,11 @@ docker run -p 8080:8080 athenas_backend
 python .\athenas_backend\manage.py runserver
 ```
 
+- **Executar o frontend `ANGULAR`**
+```
+ng serve
+```
+
 # ROTAS USUARIOS
 - **CADASTRAR USUARIO**
 ```

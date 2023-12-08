@@ -7,7 +7,7 @@ from decouple import config, Csv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-logger.add("athenas_backend/logs/logs.log",  serialize=False)
+logger.add("backend/logs/logs.log",  serialize=False)
 logger.add(sys.stdout, colorize=True, format="<green>{time}</green> <level>{message}</level>", backtrace=True, diagnose=True)
 logger.opt(colors=True)
 
