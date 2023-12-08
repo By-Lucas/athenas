@@ -61,3 +61,14 @@ http://127.0.0.1:8000/people/1
 http://127.0.0.1:8000/people/all
 ```
 
+- **DELETAR PESSOA**
+```
+http://127.0.0.1:8000/delete/1
+```
+
+
+- **FILTRAR PESSOAS**
+```
+http://127.0.0.1:8000/people/search/?name=Maria&cpf=123.456.789-00
+```
+

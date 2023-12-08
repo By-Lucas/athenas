@@ -10,7 +10,7 @@ urlpatterns = [
     path('update/<int:id>', PeopleUpdateView.as_view()),
     path('all', PeopleListView.as_view()),
     path('<int:id>', PeopleDetailView.as_view()),
-    path('delete/<int:id>/', PeopleDeleteView.as_view()),
+    path('delete/<int:id>', PeopleDeleteView.as_view()),
     path('search/', PeopleSearchView.as_view()),
     
 ]
