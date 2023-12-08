@@ -57,12 +57,12 @@ class PeopleUpdateView(APIView):
 
 class PeopleListView(APIView):
     def get(self, request):
-        user = user_authenticated(request=request)
+        #user = user_authenticated(request=request)
         
-        if user:
-            people = PeopleModel.objects.all()
-            serializer = PeopleSerializer(people, many=True)
-            return Response(serializer.data)
+        #if user:
+        people = PeopleModel.objects.all()
+        serializer = PeopleSerializer(people, many=True)
+        return Response(serializer.data)
 
 
 class PeopleDetailView(APIView):
