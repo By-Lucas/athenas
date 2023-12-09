@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let person of people">
-      <td>{{ person.name }}</td>
+      <td><a href="#" (click)="getPeople(person.id)"> {{ person.name }}</a></td>
       <td>{{ person.birth_date }}</td>
       <td>{{ person.cpf }}</td>
       <td>{{ person.sex }}</td>

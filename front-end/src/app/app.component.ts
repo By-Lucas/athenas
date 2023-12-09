@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { Data } from 'ws';
 
@@ -17,19 +17,22 @@ export class AppComponent {
   title = 'front-end';
 
   baseUrl = 'http://127.0.0.1:8000';
+  httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
 
-  people = [{name: '', email: '', cpf: '', birth_date: '', sex: '', height:'', weight:'',}];
+  people = [{ id: '' , name: '', cpf: '', birth_date: '', sex: '', height:'', weight:'',}];
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getPeople();
+    this.getAllPeople();
+    this.getPeople;
+    this.deletePeople;
   }
 
-  getPeople() {
-    this.http.get(`${this.baseUrl}/people/all`).subscribe(
+  getAllPeople() {
+    this.http.get(`${this.baseUrl}/people/all`, {headers:this.httpHeaders}).subscribe(
       (data) => {
-        this.people = data as { name: string; email: string; cpf: string; birth_date: string; sex: string; height: string; weight: string; }[]
+        this.people = data as { id:string, name:string; cpf: string; birth_date: string; sex: string; height: string; weight: string; }[]
       },
       (error) => {
         console.log(error);
@@ -37,13 +40,25 @@ export class AppComponent {
     );
   }
 
-  getPeopleOne(id:number) {
-    this.http.get(`${this.baseUrl}/people/${id}`).subscribe(
+  getPeople(id:string) {
+    this.http.get(`${this.baseUrl}/people/${id}`, {headers:this.httpHeaders}).subscribe(
       (data) => {
-        this.people = data as { name: string; email: string; cpf: string; birth_date: string; sex: string; height: string; weight: string; }[]
+        console.log(data);
+        this.people = data as {id:string, name: string; cpf: string; birth_date: string; sex: string; height: string; weight: string; }[]
       },
       (error) => {
-        console.log(error);
+        console.log("Houver o seguinte erro:", error);
+      }
+    );
+  }
+
+  deletePeople(id:string) {
+    this.http.delete(`${this.baseUrl}/people/${id}`, {headers:this.httpHeaders}).subscribe(
+      (data) => {
+        this.people = data as {id:string, name: string;cpf: string; birth_date: string; sex: string; height: string; weight: string; }[]
+      },
+      (error) => {
+        console.log("Houver o seguinte erro:", error);
       }
     );
   }
