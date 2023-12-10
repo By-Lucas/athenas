@@ -11,6 +11,9 @@ import { AppComponent } from '../app.component';
 })
 export class PersonDetailComponent implements OnInit {
 
+  errorMessage: string = '';
+  successMessage: string = '';
+
   selected_person = { id: '' , name: '', cpf: '', birth_date: '', sex: '', height:'', weight:''};
   selected_id;
   
@@ -27,6 +30,21 @@ export class PersonDetailComponent implements OnInit {
       this.loadPerson(id);
     })
   }
+
+  showSuccessMessage(message: string) {
+    this.successMessage = message;
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000); // 3000 milissegundos = 3 segundos
+  }
+
+  showErrorMessage(message: string) {
+    this.errorMessage = message;
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 3000); // Desaparece após 3 segundos
+  }
+
 
   loadPerson(id) {
     //const id = this.route.snapshot.paramMap.get('id'); // Pegar o ID no HTML
@@ -47,9 +65,12 @@ export class PersonDetailComponent implements OnInit {
       (data) => {
         console.log(data);
         this.selected_person = data
+        this.appComponent.getAllPerson();
+        this.showSuccessMessage('Dados salvos com sucesso!');
       },
       (error) => {
         console.log("Houver o seguinte erro:", error);
+        this.showErrorMessage('Erro ao salvar os dados: ' + error.message);
       }
     );
   };
@@ -69,9 +90,12 @@ export class PersonDetailComponent implements OnInit {
         });
         // Deletar da lista
         this.appComponent.peoples.splice(index, 1)
+        this.showSuccessMessage('Dados deletado com sucesso!');
       },
       (error) => {
         console.log("Houver o seguinte erro:", error);
+        this.showErrorMessage('Erro ao deletar os dados: ' + error.message);
+
       }
     );
   };

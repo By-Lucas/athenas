@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'frontend';
+  searchValue: string = ''
 
   baseUrl = 'http://127.0.0.1:8000';
   httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,7 +25,6 @@ export class AppComponent {
   getAllPerson = () => {
     this.api.getAllMembers().subscribe(
       (data) => {
-        console.log(data);
         this.peoples = data
       },
       (error) => {
