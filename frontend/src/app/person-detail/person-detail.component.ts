@@ -47,8 +47,6 @@ export class PersonDetailComponent implements OnInit {
 
 
   loadPerson(id) {
-    //const id = this.route.snapshot.paramMap.get('id'); // Pegar o ID no HTML
-
     this.api.getPerson(id).subscribe(
       (data) => {
         console.log(data);
@@ -95,7 +93,6 @@ export class PersonDetailComponent implements OnInit {
       (error) => {
         console.log("Houver o seguinte erro:", error);
         this.showErrorMessage('Erro ao deletar os dados: ' + error.message);
-
       }
     );
   };

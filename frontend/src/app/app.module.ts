@@ -8,6 +8,7 @@ import { PersonDetailComponent } from './person-detail/person-detail.component';
 import { FormsModule } from '@angular/forms';
 import { NewPersonComponent } from './new-person/new-person.component';
 import { FilterPipe } from './filter.pipe'; 
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -21,9 +22,9 @@ import { FilterPipe } from './filter.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

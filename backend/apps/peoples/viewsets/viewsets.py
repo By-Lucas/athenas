@@ -17,7 +17,6 @@ def user_authenticated(request):
 
     if not token:
         raise AuthenticationFailed('Usuário não autenticado!')
-
     try:
         payload = jwt.decode(token, 'secret', algorithms=['HS256'])
         
@@ -103,9 +102,6 @@ class PeopleDeleteView(APIView):
     permission_classes = [IsAuthenticated]
     
     def delete(self, request, id):
-        # user = user_authenticated(request=request)
-        
-        # if user:
         try:
             person = PeopleModel.objects.get(id=id)
         except PeopleModel.DoesNotExist:

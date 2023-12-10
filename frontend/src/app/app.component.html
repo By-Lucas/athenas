@@ -18,9 +18,9 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let person of peoples  | filter:searchValue" >
+    <tr *ngFor="let person of peoples | filter:searchValue" >
       <td>{{ person.name }}</td>
-      <td>{{ person.birth_date }}</td>
+      <td>{{ person.birth_date | date: 'dd/MM/yyyy' }}</td>
       <td>{{ person.cpf }}</td>
       <td>{{ person.sex }}</td>
       <td>{{ person.height }}</td>

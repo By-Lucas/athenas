@@ -1,6 +1,0 @@
-INSTALAR ANGULAR COM A VERSAO DESEJADA = npm i @angular/cli@8.3.18
-
-DENTRO DA PASTA FRONTEND ->
-CRIAR UM SERVIDE API = ng generate service api
-
-CRIAR UM COMPONENT(PARA A ROTA DA API) = ng generate component person-detail

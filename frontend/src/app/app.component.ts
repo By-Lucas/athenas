@@ -22,6 +22,7 @@ export class AppComponent {
     this.getAllPerson();
   }
 
+  formattedDate;
   getAllPerson = () => {
     this.api.getAllMembers().subscribe(
       (data) => {
