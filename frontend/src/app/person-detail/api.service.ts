@@ -24,4 +24,10 @@ export class ApiService {
   }
 
 
+  deletePerson(id) : Observable<any> {
+    return this.http.delete(`${this.baseUrl}/people/delete/${id}`,{headers:this.httpHeaders});
+  }
+
+
+
 }

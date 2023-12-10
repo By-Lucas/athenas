@@ -99,13 +99,13 @@ class PeopleSearchView(APIView):
     
 class PeopleDeleteView(APIView):
     def delete(self, request, id):
-        user = user_authenticated(request=request)
+        # user = user_authenticated(request=request)
         
-        if user:
-            try:
-                person = PeopleModel.objects.get(id=id)
-            except PeopleModel.DoesNotExist:
-                return Response({'error': 'Pessoa não encontrada.'}, status=status.HTTP_404_NOT_FOUND)
+        # if user:
+        try:
+            person = PeopleModel.objects.get(id=id)
+        except PeopleModel.DoesNotExist:
+            return Response({'error': 'Pessoa não encontrada.'}, status=status.HTTP_404_NOT_FOUND)
 
-            person.delete()
-            return Response({'detail': 'Pessoa deletada com sucesso.'}, status=status.HTTP_204_NO_CONTENT)
+        person.delete()
+        return Response({'detail': 'Pessoa deletada com sucesso.'}, status=status.HTTP_204_NO_CONTENT)

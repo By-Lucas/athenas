@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ApiService } from './api.service';
+import { AppComponent } from '../app.component';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class PersonDetailComponent implements OnInit {
   constructor( 
     private route: ActivatedRoute, 
     private api: ApiService, 
-    private router: Router ) { }
+    private router: Router, 
+    private appComponent: AppComponent ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((param: ParamMap) => {
@@ -54,6 +56,23 @@ export class PersonDetailComponent implements OnInit {
 
   newPerson(){
     this.router.navigate(['new-person']);
-  }
+  };
+
+  delete(person){
+    this.api.deletePerson(this.selected_id).subscribe(
+      (data) => {
+        let index;
+        console.log(data);
+        this.appComponent.peoples.forEach((e, i) =>{
+          if (e.id == this.selected_id)
+          index = i
+        });
+        this.appComponent.peoples.splice(index, 1)
+      },
+      (error) => {
+        console.log("Houver o seguinte erro:", error);
+      }
+    );
+  };
 
 }
