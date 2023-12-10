@@ -1,10 +1,11 @@
 import jwt
-import datetime
 
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 
 from accounts.models import User
 from peoples.models import PeopleModel
@@ -98,6 +99,9 @@ class PeopleSearchView(APIView):
     
     
 class PeopleDeleteView(APIView):
+    authentication_classes = [TokenAuthentication, SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    
     def delete(self, request, id):
         # user = user_authenticated(request=request)
         
