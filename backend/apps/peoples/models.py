@@ -19,9 +19,9 @@ class PeopleModel(BaseModelTimestamp):
     
     def calculate_ideal_weight(self):
         if self.sex == 'M':
-            return (72.7 * self.height) - 58
+            return round((72.7 * float(self.height)) - 58, 2)
         elif self.sex == 'F':
-            return (62.1 * self.height) - 44.7
+            return round((62.1 * float(self.height)) - 44.7, 2)
         else:
             return None
         

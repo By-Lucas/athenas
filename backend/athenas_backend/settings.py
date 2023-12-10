@@ -37,8 +37,9 @@ DJANGO_APPS = [
 ]
 
 THIRD_APPS = [
-    'rest_framework',
     'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
 
 # New apps added
@@ -128,6 +129,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

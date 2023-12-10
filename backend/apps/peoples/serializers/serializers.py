@@ -5,5 +5,5 @@ from peoples.models import PeopleModel
 class PeopleSerializer(serializers.ModelSerializer):
     class Meta:
         model = PeopleModel
-        fields = '__all__'
+        fields = ['id', 'name', 'birth_date', 'cpf', 'sex', 'height', 'weight', 'calculate_ideal_weight', 'created_date']
         

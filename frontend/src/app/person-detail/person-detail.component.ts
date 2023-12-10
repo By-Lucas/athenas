@@ -67,6 +67,7 @@ export class PersonDetailComponent implements OnInit {
           if (e.id == this.selected_id)
           index = i
         });
+        // Deletar da lista
         this.appComponent.peoples.splice(index, 1)
       },
       (error) => {

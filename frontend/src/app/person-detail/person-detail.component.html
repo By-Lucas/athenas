@@ -1,18 +1,70 @@
-<h1>Member detail: {{selected_person.name}}</h1>
-
-<p>ID selecionado: {{selected_id}}</p>
-
-<input type="text" [(ngModel)]="selected_person.id" readonly>
-<input type="text" [(ngModel)]="selected_person.name">
-<input type="text" [(ngModel)]="selected_person.birth_date">
-<input type="text" [(ngModel)]="selected_person.cpf">
-<input type="text" [(ngModel)]="selected_person.sex">
-<input type="text" [(ngModel)]="selected_person.height">
-<input type="text" [(ngModel)]="selected_person.weight">
-<br>
-<button type="button" (click)="update()">Salvar alterações</button>
-<button type="button" (click)="delete(selected_person)">Deletar</button>
-<br>
-<button type="button" (click)="newPerson()">Novo cadastro</button>
+<h1>Detalhes: {{selected_person.name}}</h1>
 
 
+<div class="row mt-3">
+    <div class="col-4 col-sm-4 mb-3">
+        <label for="id_person">ID</label>
+        <input type="text" id="id_person" class="form-control" [(ngModel)]="selected_person.id" readonly>
+    </div>
+    <div class="col col-sm-8 mb-3">
+        <label for="name_person">Nome completo</label>
+        <input type="text" id="name_person" class="form-control" [(ngModel)]="selected_person.name">
+    </div>
+    <div class="col-md-6">
+        <label for="birth_date_person">Data de nascimento</label>
+        <input type="date" id="birth_date_person" class="form-control" [(ngModel)]="selected_person.birth_date">
+    </div>
+    <div class="col-md-6  mb-3">
+        <label for="cpf_person">CPF</label>
+        <input type="text" id="cpf_person" class="form-control" [(ngModel)]="selected_person.cpf">
+    </div>
+
+    <div class="col-md-6  mb-3">
+        <label for="sex_person">Sexo</label>
+        <select id="sex_person" class="form-select" [(ngModel)]="selected_person.sex">
+            <option value="M" selected>Masculino</option>
+            <option value="F">Feminino</option>
+        </select>
+    </div>
+    <div class="col-md-6  mb-3">
+        <label for="sex_person">Altura</label>
+        <input type="number" class="form-control" [(ngModel)]="selected_person.height">
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="sex_person">Peso</label>
+        <input type="number" class="form-control" [(ngModel)]="selected_person.weight">
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="sex_person">Data cadastro</label>
+        <input type="datetime" class="form-control" [(ngModel)]="selected_person.created_date" readonly>
+    </div>
+
+    <br>
+    <div class="col-md-12">
+        <button type="button" class="btn btn-outline-primary" (click)="update()">Salvar alterações</button>
+        <button type="button" class="btn btn-outline-danger m-3" (click)="delete(selected_person)">Deletar</button>
+        <button type="button" class="btn btn-outline-success" (click)="newPerson()">Novo cadastro</button>
+        <button type="button" class="btn btn-outline-secondary m-3" data-bs-toggle="modal" data-bs-target="#calculate">Calcular</button>
+    </div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="calculate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Resultado: {{selected_person.name}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h3>Resultado: <strong>{{selected_person.calculate_ideal_weight}}</strong></h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>

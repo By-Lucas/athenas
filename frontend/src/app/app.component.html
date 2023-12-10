@@ -1,5 +1,5 @@
-<h1>Pessoas</h1>
 
+<h1>Cadastros</h1>
 
 <table class="table">
   <thead>
@@ -22,7 +22,7 @@
       <td>{{ person.height }}</td>
       <td>{{ person.weight }}</td>
       <td>
-        <button type="button" (click)="ClickgetPerson(person)">Detalhes</button>
+        <button type="button" class="btn btn-outline-primary" (click)="ClickgetPerson(person)">Detalhes</button>
       </td>
     </tr>
   </tbody>
@@ -31,7 +31,8 @@
 <!-- <br><br>
 <p> {{ selected_person.name }} </p>
 <p> {{ selected_person.cpf }} </p> -->
-
-
+<div class="container mt-5">
 
 <router-outlet></router-outlet>
+
+</div>
