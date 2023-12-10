@@ -67,16 +67,16 @@ class PeopleListView(APIView):
 
 class PeopleDetailView(APIView):
     def get(self, request, id):
-        user = user_authenticated(request=request)
+        # user = user_authenticated(request=request)
         
-        if user:
-            try:
-                person = PeopleModel.objects.get(id=id)
-            except PeopleModel.DoesNotExist:
-                return Response({'error': 'Pessoa não encontrada.'}, status=404)
+        # if user:
+        try:
+            person = PeopleModel.objects.get(id=id)
+        except PeopleModel.DoesNotExist:
+            return Response({'error': 'Pessoa não encontrada.'}, status=404)
 
-            serializer = PeopleSerializer(person)
-            return Response(serializer.data)
+        serializer = PeopleSerializer(person)
+        return Response(serializer.data)
 
 
 class PeopleSearchView(APIView):
