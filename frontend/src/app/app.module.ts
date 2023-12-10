@@ -5,17 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonDetailComponent } from './person-detail/person-detail.component';
+import { FormsModule } from '@angular/forms';
+import { NewPersonComponent } from './new-person/new-person.component'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonDetailComponent
+    PersonDetailComponent,
+    NewPersonComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

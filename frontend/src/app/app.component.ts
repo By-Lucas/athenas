@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,8 @@ export class AppComponent {
   selected_person= { id: '' , name: '', cpf: '', birth_date: '', sex: '', height:'', weight:''};
   peoples = [{ id: 1 , name: 'Lucas Silva', cpf: '646.998.781-89', birth_date: '22/09/1995', sex: 'M', height:'1.8', weight:'0.65'}];
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
     this.getAllPerson();
-    this.getPerson;
   }
 
   getAllPerson = () => {
@@ -33,18 +33,9 @@ export class AppComponent {
     );
   };
 
-  getPerson = (person) => {
-    this.api.getMember(person.id).subscribe(
-      (data) => {
-        this.selected_person = data
-        console.log(this.selected_person);
-
-        //this.peoples = data as {id:string, name: string; cpf: string; birth_date: string; sex: string; height: string; weight: string; }[] 
-      },
-      (error) => {
-        console.log("Houver o seguinte erro:", error);
-      }
-    );
+  ClickgetPerson = (person) => {
+    // Navegar entre as paginas
+    this.router.navigate(['person-detail', person.id]);
   };
 
 }

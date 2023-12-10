@@ -10,23 +10,27 @@
       <th>Sexo</th>
       <th>Altura</th>
       <th>Peso</th>
+      <th>Opções</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let person of peoples">
-      <td><a href="#" (click)="getPerson(person)" > {{ person.name }}</a></td>
+    <tr *ngFor="let person of peoples" >
+      <td>{{ person.name }}</td>
       <td>{{ person.birth_date }}</td>
       <td>{{ person.cpf }}</td>
       <td>{{ person.sex }}</td>
       <td>{{ person.height }}</td>
       <td>{{ person.weight }}</td>
+      <td>
+        <button type="button" (click)="ClickgetPerson(person)">Detalhes</button>
+      </td>
     </tr>
   </tbody>
 </table>
 
-<br><br>
+<!-- <br><br>
 <p> {{ selected_person.name }} </p>
-<p> {{ selected_person.cpf }} </p>
+<p> {{ selected_person.cpf }} </p> -->
 
 
 

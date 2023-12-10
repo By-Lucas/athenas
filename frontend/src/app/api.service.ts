@@ -21,4 +21,8 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/people/${id}`,{headers:this.httpHeaders});
   }
 
+  saveNewPerson(member) :Observable<any> {
+    return this.http.post(`${this.baseUrl}/people/create`, member, {headers:this.httpHeaders});
+  }
+
 }

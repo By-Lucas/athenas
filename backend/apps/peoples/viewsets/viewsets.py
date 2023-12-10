@@ -30,29 +30,29 @@ def user_authenticated(request):
 class PeopleCreateView(APIView):
     
     def post(self, request):
-        user = user_authenticated(request=request)
+        # user = user_authenticated(request=request)
         
-        if user:
-            serializer = PeopleSerializer(data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return Response(serializer.data)
+        # if user:
+        serializer = PeopleSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
 class PeopleUpdateView(APIView):
 
     def put(self, request, id):
-        user = user_authenticated(request=request)
+        # user = user_authenticated(request=request)
         
-        if user:
-            people = PeopleModel.objects.filter(id=id).first()
-            if not people:
-                return Response({"error": "Pessoa não encontrada."}, status=404)
+        # if user:
+        people = PeopleModel.objects.filter(id=id).first()
+        if not people:
+            return Response({"error": "Pessoa não encontrada."}, status=404)
 
-            serializer = PeopleSerializer(instance=people, data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-            return Response(serializer.data)
+        serializer = PeopleSerializer(instance=people, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
 class PeopleListView(APIView):

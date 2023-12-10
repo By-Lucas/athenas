@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ApiService } from './api.service';
 
 
@@ -11,28 +11,49 @@ import { ApiService } from './api.service';
 export class PersonDetailComponent implements OnInit {
 
   selected_person = { id: '' , name: '', cpf: '', birth_date: '', sex: '', height:'', weight:''};
-
-  constructor( private route: ActivatedRoute, private api: ApiService ) { }
+  selected_id;
+  
+  constructor( 
+    private route: ActivatedRoute, 
+    private api: ApiService, 
+    private router: Router ) { }
 
   ngOnInit() {
-    this.loadPerson();
+    this.route.paramMap.subscribe((param: ParamMap) => {
+      let id = parseInt(param.get('id'));
+      this.selected_id = id
+      this.loadPerson(id);
+    })
   }
 
-  loadPerson() {
-    const id = this.route.snapshot.paramMap.get('id'); // Pegar o ID no HTML
-    console.log(id);
+  loadPerson(id) {
+    //const id = this.route.snapshot.paramMap.get('id'); // Pegar o ID no HTML
 
-    this.api.getMember(id).subscribe(
+    this.api.getPerson(id).subscribe(
       (data) => {
-        this.selected_person = data
         console.log(data);
-
-        //this.peoples = data as {id:string, name: string; cpf: string; birth_date: string; sex: string; height: string; weight: string; }[] 
+        this.selected_person = data
       },
       (error) => {
         console.log("Houver o seguinte erro:", error);
       }
     );
   };
+
+  update(){
+    this.api.updatePerson(this.selected_person).subscribe(
+      (data) => {
+        console.log(data);
+        this.selected_person = data
+      },
+      (error) => {
+        console.log("Houver o seguinte erro:", error);
+      }
+    );
+  };
+
+  newPerson(){
+    this.router.navigate(['new-person']);
+  }
 
 }
