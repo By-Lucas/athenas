@@ -1,0 +1,42 @@
+
+<h1>Cadastros</h1>
+
+<div class="input-group mt-3 mb-3">
+  <input type="search" class="form-control" [(ngModel)]="searchValue" placeholder="Busque por Nome ou CPF...">
+</div>
+
+<table class="table">
+  <thead>
+    <tr >
+      <th>Name</th>
+      <th>Data nascimento</th>
+      <th>CPF</th>
+      <th>Sexo</th>
+      <th>Altura</th>
+      <th>Peso</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let person of peoples | filter:searchValue" >
+      <td>{{ person.name }}</td>
+      <td>{{ person.birth_date | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ person.cpf }}</td>
+      <td>{{ person.sex }}</td>
+      <td>{{ person.height }}</td>
+      <td>{{ person.weight }}</td>
+      <td>
+        <button type="button" class="btn btn-outline-primary" (click)="ClickgetPerson(person)">Detalhes</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <br><br>
+<p> {{ selected_person.name }} </p>
+<p> {{ selected_person.cpf }} </p> -->
+<div class="container mt-5">
+
+  <router-outlet></router-outlet>
+
+</div>
